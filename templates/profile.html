@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %} Profile {% endblock %}
+
+{% block body %}
+<div class="container">
+    <br>
+    <h1>{{ developer_name }}</h1>
+    <hr>
+    {% if projects|length > 0 %}
+        {% for el in projects %}
+        <div class="row g-3 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="alert alert-info post col p-4 d-flex flex-column position-static">
+                <h2>Title: {{ el.title }}</h2>
+                <p><b>Name: {{ el.name_visiable }}</b></p><br>
+                <a href="{{ el.url }}" target="_blank" class="link-dark"><b>Git-Url</b></a><br>
+                <p>Short Text: {{ el.intro }}</p><br>
+                
+                <p><b>Date:</b> {{ el.date.date() }}</p><br>
+                
+                <a href="/posts/{{ el.id }}/{{ id_developer }}/detail" class="btn btn-success btn-go">Go to project</a><br>
+                <a href="/{{ el.id }}/{{ id_developer }}/delete" class="btn btn-warning btn-go">Delete</a>
+            
+            </div>
+            
+        </div>
+        <hr>
+        {% endfor %}
+    {% else %}
+
+        <p><b>You have not get any project...</b></p>
+
+    {% endif %} 
+
+</div>
+
+{% endblock %}

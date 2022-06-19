@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %} Global Page {% endblock %}
+
+{% block body %} 
+
+
+
+<div class="container p-3 pb-md-4 mx-auto text-center" style="overflow: hidden; height: var(--height);">
+    
+  <div class="row mb-2">
+
+      <br>
+      <br>
+      <br>
+      <hr>
+        <p><b>Hello! Let's go coding...</b></p>
+      <hr>
+      {% if projects|length > 0 %}
+        {% for project in projects %}
+        <div class="alert alert-info post col p-4 d-flex flex-column position-static">
+          <h2>Title: <b>{{ project.title }}</b></h2>
+          <p><b>Developer:</b> {{ project.name_visiable }}</p>
+          <p><b>Intro: </b>{{ project.intro }}</p>
+          <p><b>Date:</b> {{ project.date.date() }}</p>
+          <a href="/posts/{{ project.id }}/{{ id_developer }}/detail" class="btn btn-success btn-go">Go to project</a>
+          <hr>
+        </div>
+        <br>
+        <hr>
+        {% endfor %}
+      {% else %}
+        <p><b>We have not get any page...</b></p>
+      {% endif %}
+  </div>
+
+</div>
+
+{% endblock %}

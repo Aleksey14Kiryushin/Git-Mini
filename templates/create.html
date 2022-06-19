@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %} Create Page {% endblock %}
+
+{% block body %}
+<div class="py-2 bg-light container border-bottom flex-wrap shadow-mb">
+    <hr>
+    <br>
+    <h1>Add New Post</h1>
+    <br>
+    <form method="post" style="border-radius: 20px;">
+
+        <div class="form-floating shadow-mb">
+            <input value='{{ name }}' type="text" class="form-control" name="name" id="name" placeholder="Укажите имя, которое увидят пользователи:">
+            <label for="name">Укажите имя, которое увидят пользователи:</label>
+            <br>
+        </div>
+
+        <div class="form-floating">
+            <input value='{{ title }}' type="text" class="form-control" name="title" id="title" placeholder="Введите заголовок:">
+            <label for="title">Введите заголовок:</label>
+            <br>
+        </div>
+
+        <div class="form-floating">
+            <input value='{{ intro }}' type="text" class="form-control" name="intro" id="intro" placeholder="Кратко расскажите о проекте:">
+            <label for="intro">Кратко расскажите о проекте:</label>
+            <br>
+        </div>
+
+        <div class="form-floating">
+            <input value='{{ url }}' type="url" class="form-control" name="url" id="url" placeholder="Добавьте ссылку проекта с Github:">
+            <label for="url">Добавьте ссылку проекта с Github:</label>
+            <br>
+        </div>
+        <br>
+        <hr>
+        <input type="submit" class="btn w-100 btn-lg btn-primary" value="Next Step >">
+
+    </form>
+</div>
+{% endblock %}

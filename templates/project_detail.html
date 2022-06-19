@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %} {{ project.title }} {% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+<div class="container shadow-sm">
+    <hr>
+    <h1>{{ project.title }}</h1>
+    <br>
+    <div class="row g-2 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="alert alert-info post col p-4 d-flex flex-column position-static">
+            <p><b>Developer: </b>{{ project.name_visiable }}</p>
+            <p><b>Intro: </b>{{ project.intro }}</p>
+            <p><b>Url: </b>{{ project.url }}</p>
+            <p><b>Date: </b>{{ project.date.date() }}</p>
+
+            <a target="_blank"  href="{{ project.url }}" class="link-dark"><b>Contact for discussion</b></a><br>
+            <p><b>Date: </b>{{ project.date.date() }}</p>
+        </div>
+        
+    </div>
+</div>
+<div class="container shadow-sm" >
+    {% if project.main_file != '' %}
+        {% set file_name_1 = 'uploads/'+project.main_file %}
+        {% set html_file = 'static/' + file_name_1 %}   
+            <a href="{{html_file}}" download>HTML-file</a>
+
+        {% if project.file_1st != ''%}
+            {% set file_name = 'uploads/'+project.file_1st %}
+            <link rel="stylesheet" href="{{ url_for('static', filename=file_name) }}">
+        {% endif %}
+
+        {% if project.file_2nd != ''%}
+            {% set file_name = 'uploads/'+project.file_2nd %}
+            <link rel="stylesheet" href="{{ url_for('static', filename=file_name) }}"> 
+        {% endif %}
+
+        {% if project.file_3rd != ''%}
+            {% set file_name = 'uploads/'+project.file_3rd %}   
+            <link rel="stylesheet" href="{{ url_for('static', filename=file_name) }}">
+        {% endif %}
+
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="{{ url_for('static', filename = file_name_1 ) }}" width="100%" height="500px" allow="fullscreen" sandbox="allow-forms allow-modals" loading="lazy">
+                Something didn't go according to plan...
+            </iframe>
+        </div>
+        <br>
+   
+    {% else %}
+        <p><b>File is not founded</b></p>
+
+    {% endif %}
+
+
+</div>
+{% endblock %}
